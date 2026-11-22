@@ -21,7 +21,7 @@ from utils.training_utils.engine_utils import load_state_dict_pdisco, AverageMet
 from utils.wandb_params import init_wandb
 from .losses import *
 
-amp_dtype = 'bfloat16' if torch.cuda.is_available() and torch.cuda.is_bf16_supported(including_emulation=False) else 'float16'  # 'float32', 'bfloat16', or 'float16', the latter will auto implement a GradScaler
+amp_dtype = 'bfloat16' if torch.cuda.is_available() and torch.cuda.is_bf16_supported() else 'float16'  # 'float32', 'bfloat16', or 'float16', the latter will auto implement a GradScaler
 # note: float16 data type will automatically use a GradScaler
 pt_dtype = {'float32': torch.float32, 'bfloat16': torch.bfloat16, 'float16': torch.float16}[amp_dtype]
 
